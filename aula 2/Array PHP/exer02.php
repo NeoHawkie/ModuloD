@@ -8,9 +8,9 @@ $positivos = 0;
 $negativos = 0;
 $pares = 0;
 $impares = 0;
-
-echo "Entre com 10 inteiros para uma array: \n";
+echo "Entre abaixo com 10 inteiros para uma array: \n";
 for ($i = 0; $i < 10; $i++) {
+    echo "Valor: ";
     $array[$i] = (int) readline(); // leio os numeros
 
     if ($array[$i] < 0) { //verifico se é negativo;

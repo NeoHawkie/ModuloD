@@ -14,7 +14,7 @@ $temp = 0;
 for ($i = 0; $i < 10; $i++) {
     echo "\nEntre com os dados do aluno\n"; // coleto os dados nome e nota;
     echo "Nome: ";
-    $aluno[$i] = (string) readline();
+    $nome[$i] = (string) readline();
     echo "Nota: ";
     $nota[$i] = (float) readline();
     $media += $nota[$i]; // somo as notas;

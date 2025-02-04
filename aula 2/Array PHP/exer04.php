@@ -12,11 +12,13 @@ $vetRes = [];
 
 echo "Entre com os valores para o primeiro vetor: \n";
 for ($i = 0; $i < 10; $i++) {
+    echo "\nValor: ";
     $vet1[$i] = (int) readline();
 }
 
 echo "Entre com os valores para o segundo vetor: \n";
 for ($i = 0; $i < 10; $i++) {
+    echo "\nValor: ";
     $vet2[$i] = (int) readline();
 }
 // echo var_dump($vet1);
