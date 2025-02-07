@@ -4,8 +4,8 @@
     de cada número.
 */
 
-function multiplica2($array){ //função que multiplica a variavel nela inserida por 2, e a retorna;
-    return $array*2;
+function multiplica2($var){ //função que multiplica a variavel nela inserida por 2, e a retorna;
+    return $var*2;
 }
 
 $array = range(0,10); // array com valores de 0 a 10;
