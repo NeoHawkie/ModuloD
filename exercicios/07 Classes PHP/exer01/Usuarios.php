@@ -7,10 +7,10 @@
 
 class Usuarios
 {
-    private int $ID;
-    private String $nome;
-    private String $email;
-    private String $senha;
+    public int $ID;
+    public String $nome;
+    public String $email;
+    public String $senha;
 
     public function cadastrar(int $IdCont, String $nome, String $email, String $senha, array $usuarios)
     {
@@ -24,20 +24,27 @@ class Usuarios
             echo "\nNovo usuário cadastrado com sucesso!\n";
 
             return $usuarios;
-        }else{
+        } else {
             echo "\nNovo usuário NÃO cadastrado!\n";
 
             return $usuarios;
         }
     }
 
-    public function alterar() {}
+    public function alterar($indice, $nome, $email, $senha, $usuarios)
+    {
+        $usuarios[$indice]->nome = $nome;
+        $usuarios[$indice]->email = $email;
+        $usuarios[$indice]->senha = $senha;
 
-    public function deletar($ID, $usuarios) {
+        return $usuarios;
+    }
+
+    public function deletar($ID, $usuarios)
+    {
         $deleted = false;
-        for ($i=0; $i < count($usuarios); $i++) { 
+        for ($i = 0; $i < count($usuarios); $i++) {
             if ($usuarios[$i]->ID == $ID) {
-//                echo 'oi';
                 unset($usuarios[$i]);
                 echo "\nUsuário deletado com sucesso!\n";
                 $deleted = true;
@@ -49,13 +56,20 @@ class Usuarios
         return $usuarios;
     }
 
-    public function mostrarTodos($usuarios) {
-        foreach($usuarios as $u){
+    public function mostrarTodos($usuarios)
+    {
+        if (!count($usuarios) == 0) {
+            foreach ($usuarios as $u) {
+                echo "--------------------------------- \n";
+                echo "ID: " . $u->ID . "\n";
+                echo "Nome: " . $u->nome . "\n";
+                echo "Email: " . $u->email . "\n";
+                echo "Senha: " . $u->senha . "\n";
+                echo "--------------------------------- \n";
+            }
+        }else {
             echo "--------------------------------- \n";
-            echo "ID: " . $u->ID . "\n";
-            echo "Nome: " . $u->nome . "\n";
-            echo "Email: " . $u->email . "\n";
-            echo "Senha: " . $u->senha . "\n";
+            echo "não há usuários cadastrados.\n";
             echo "--------------------------------- \n";
         }
     }

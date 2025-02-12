@@ -70,6 +70,8 @@ while ($menu != 6) {
                     $s = readline();
 
                     $usuarios =  $u->alterar($i, $n, $e, $s, $usuarios);
+                } else {
+                    echo "Usuário NÃO encontrado! Tente novamente.\n";
                 }
             }
             break;
