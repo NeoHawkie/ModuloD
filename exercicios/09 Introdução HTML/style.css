@@ -1,3 +1,8 @@
+:root {
+    --nome-da-variavel: #1c1c1c;
+    /*e então usa-se a propria variavel ao invés da cor, ex: color: --nome-da-variavel;*/
+}
+
 * {
     margin-left: 5%;
     margin-right: 5%;
@@ -5,5 +10,9 @@
 
 .menu {
     color: red;
-    background-color: darkgray;
+    background-color: rgb(42, 216, 201);
+}
+
+section {
+    font-size: 130%;
 }
