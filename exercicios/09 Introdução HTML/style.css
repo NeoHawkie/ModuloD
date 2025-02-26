@@ -3,16 +3,49 @@
     /*e então usa-se a propria variavel ao invés da cor, ex: color: --nome-da-variavel;*/
 }
 
-* {
-    margin-left: 5%;
-    margin-right: 5%;
+
+
+.menu{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: darkcyan;
+    border-style: solid;
 }
 
-.menu {
-    color: red;
-    background-color: rgb(42, 216, 201);
+.menu a {
+    text-decoration: none;
+    color: cyan;
 }
+
+.menu h3 {
+    justify-content: space-between;
+    background-color: blue;
+    width: 400px;
+}
+.menu img{
+    height: 90px;
+}
+
 
 section {
     font-size: 130%;
+}
+
+.classes-div {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 1800px;
+    order: 2;
+}
+
+.classes-div img {
+    display: flex;
+    order: 1;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    background-color: blue;
 }
