@@ -1,0 +1,42 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .article p {
+    margin-bottom: 10px;
+  }
+  
+  .extra-content {
+    display: none; /* Hide the extra content initially */
+  }
+  
+  .show-more-checkbox:checked + .show-more-label + .extra-content {
+    display: block; /* Show the extra content when checkbox is checked */
+  }
+  
+  .show-more-checkbox {
+    display: none; /* Hide the checkbox itself */
+  }
+  
+  .show-more-label {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .show-more-checkbox:checked + .show-more-label {
+    background-color: #FF5733; /* Change color when content is shown */
+  }
+  
+  .show-more-checkbox:checked + .show-more-label::before {
+    content: "Show Less"; /* Change text to "Show Less" */
+  }
+  

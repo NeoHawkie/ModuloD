@@ -3,33 +3,42 @@
     /*e então usa-se a propria variavel ao invés da cor, ex: color: --nome-da-variavel;*/
 }
 
+section {
+    font-size: 130%;
+}
 
-
-.menu{
+.menu {
     display: flex;
-    justify-content:space-between;
+    height: fit-content;
+    justify-content: space-between;
     align-items: center;
     background-color: darkcyan;
+
     border-style: solid;
 }
 
 .menu a {
+    background-color: darkcyan;
+    width: fit-content;
+    display: flex;
     text-decoration: none;
     color: cyan;
 }
 
 .menu h3 {
-    justify-content: space-between;
-    background-color: blue;
-    width: 400px;
-}
-.menu img{
-    height: 90px;
+    display: flex;
+    background-color: darkcyan;
+    width: 700px;
+    justify-content: space-evenly;
+
 }
 
-
-section {
-    font-size: 130%;
+.menu img {
+    display: flex;
+    height: 100px;
+    border-left: 0px;
+    border-color: black;
+    border-style: solid;
 }
 
 .classes-div {
@@ -46,6 +55,52 @@ section {
     order: 1;
     flex-wrap: wrap;
     flex-direction: row;
-
-    background-color: blue;
 }
+
+.screenshots-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 930px;
+
+}
+
+.screenshots-div img {
+    display: flex;
+    padding: 1%;
+    width: 290px;
+    height: 180px;
+}
+
+.hidden {
+    display: none;
+}
+
+.show-hidden:checked+.show-hidden-label+.hidden {
+    display:contents;
+}
+
+.show-hidden{
+    display: none;
+}
+
+.show-hidden-label {
+    display: flex;
+    width: fit-content;
+    justify-content: right;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: darkcyan;
+    color: cyan;
+    border: solid;
+    border-color: black;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .show-hidden:checked + .show-hidden-label {
+    background-color: cyan;
+    color: darkcyan;
+  }
