@@ -53,23 +53,28 @@ section {
     justify-content: space-evenly;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 1800px;
-    order: 2;
+    padding: 1%;
+    width: fit-content;
 }
 
 .classes-div img {
     display: flex;
-    order: 1;
     flex-wrap: wrap;
     flex-direction: row;
+}
+
+.class {
+    padding: 5%;
+    text-align: center;
+    flex-wrap: wrap;
 }
 
 .screenshots-div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 930px;
-
+    width: fit-content;
+    max-width: 930px;
 }
 
 .screenshots-div img {
@@ -79,15 +84,36 @@ section {
     height: 180px;
 }
 
+.squad-div{
+    display: flex;
+    flex-wrap: wrap;
+    height: 160px;
+    width: fit-content;
+}
+
+.character-div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 246px;
+    background-color: lightgray;
+    padding: 1%;
+}
+
 .hidden {
     display: none;
 }
 
-.show-hidden:checked+.show-hidden-label+.hidden {
-    display:contents;
+.hidden p {
+    display: flex;
+    
+    width: 185px;
 }
 
-.show-hidden{
+.show-hidden:checked+.show-hidden-label+.hidden {
+    display: contents;
+}
+
+.show-hidden {
     display: none;
 }
 
@@ -106,10 +132,54 @@ section {
     border-radius: 5px;
     text-align: center;
     box-shadow: 2px 2px 4px black;
-  }
+}
 
-  .show-hidden:checked + .show-hidden-label {
+.show-hidden:checked+.show-hidden-label {
     background-color: cyan;
     color: darkcyan;
     border-color: darkcyan;
-  }
+}
+
+@media (max-width: 473px) {
+    .menu {
+        display: flex;
+        height: 160px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: darkcyan;
+
+        border-style: solid;
+        border-color: cyan;
+    }
+
+    .menu a {
+        background-color: darkcyan;
+        width: 150px;
+        display: flex;
+        text-decoration: none;
+        color: cyan;
+        border: 3px;
+        border-color: cyan;
+        border-style: solid;
+        box-shadow: 2px 2px 2px black;
+        justify-content: center;
+        margin: 1%;
+    }
+
+    .menu h3 {
+        display: flex;
+        background-color: darkcyan;
+        width: fit-content;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+    }
+
+    .menu img {
+        display: flex;
+        height: 100px;
+        border-left: 0px;
+        border-color: cyan;
+        border-style: solid;
+    }
+}
