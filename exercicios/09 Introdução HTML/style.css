@@ -84,11 +84,22 @@ section {
     height: 180px;
 }
 
+.team-div{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
 .squad-div{
     display: flex;
     flex-wrap: wrap;
-    height: 160px;
-    width: fit-content;
+    height: fit-content;
+    flex-direction: column;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    justify-content: center;
+}
+.squad-div h4{
+    margin-right: 10px;
 }
 
 .character-div{
