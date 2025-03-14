@@ -1,0 +1,35 @@
+.qualquercoisa{
+    height: 1000px;
+    background-color: blanchedalmond;
+}
+
+#container{
+    opacity: 1;
+    height: 800px;
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.visible{
+    width: 200px;
+    height: 200px;
+    animation: fadeIn 3s linear;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-300%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
