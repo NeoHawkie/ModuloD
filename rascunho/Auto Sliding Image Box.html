@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Sliding Image Box</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* To make the transition smooth */
+        .image-carousel {
+            transition: transform 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w-full overflow-hidden relative">
+      <div class="image-carousel flex space-x-4">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSBq6m92IKzslpZKTJ5E2J4XzQyq7KUCMC0cymaOYxRIs0hIq-fScmGzeCNhPIzSZXV60&usqp=CAU"
+            alt="Image 1" class="w-48 h-auto object-cover">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrTKNqE2UG0AYWLBQ8Ur_I5JOuVRyQYucbtFT4bf-vmYikoUnWDMwOLngLz3Z3o-_IdJM&usqp=CAU"
+                alt="Image 2" class="w-48 h-auto object-cover">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaYd0JV_q0Ij9hP6YT4drzupKktyxf3GYJRm0WEMaZ4F0DBUKmLrVKQsEuZ-CJ9ByTsCI&usqp=CAU"
+                alt="Image 3" class="w-48 h-auto object-cover">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFvSMQDOavM0CpGfq6H6452jbZdFd7vcr2cOWGciAlffRpOO4lh3Pb8OvxPVCktWkmfas&usqp=CAU"
+                alt="Image 4" class="w-48 h-auto object-cover">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP2uGwUAfyAQ06qCGeZfc7VFCBnO3ve5-LtUJRc4FbXRmx8EhFCXh_BucGJErXAtiV4PQ&usqp=CAU"
+                alt="Image 5" class="w-48 h-auto object-cover">
+        </div>
+    </div>
+
+    <script>
+        const carousel = document.querySelector('.image-carousel');
+        let currentIndex = 0;
+        const imagesCount = document.querySelectorAll('.image-carousel img').length;
+
+        function slideImages() {
+            // Slide to the next image
+            currentIndex = (currentIndex + 1) % imagesCount;
+
+            // Set the transform to slide the images
+            carousel.style.transform = `translateX(-${currentIndex * 192}px)`; // 192px = 48px width + 4px margin
+        }
+
+        setInterval(slideImages, 2000); // Change every 2 seconds
+    </script>
+</body>
+
+</html>
