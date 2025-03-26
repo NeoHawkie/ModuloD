@@ -6,6 +6,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+
 if (isset($_POST['atualizar_usuario'])) {
 
     if (strlen($_POST['nome']) == 0) {
@@ -21,7 +22,7 @@ if (isset($_POST['atualizar_usuario'])) {
         $_SESSION['mensagem'] = 'O campo senha é obrigatorio!';
         exit();
     } else {
-        
+
         $id = ($_SESSION['id']);
         $nome = ($_POST['nome']);
         $email = ($_POST['email']);
@@ -56,7 +57,7 @@ if (isset($_POST['cadastrar_usuario'])) {
 
         $nome = ($_POST['nome']);
         $email = ($_POST['email']);
-        $senha = ($_POST['senha']);
+        $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
         $query = db()->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)");
         $user = $query->execute([
@@ -65,7 +66,7 @@ if (isset($_POST['cadastrar_usuario'])) {
             'senha' => $senha
         ]);
 
-        header('Location: index.php');
+        header('Location: login.php');
     }
 }
 
@@ -79,24 +80,57 @@ if (isset($_POST['logar'])) {
         exit();
     } else {
 
-        $query = db()->prepare("SELECT * FROM usuarios WHERE email = :email AND senha = :senha");
+        $query = db()->prepare("SELECT * FROM usuarios WHERE email = :email");
         $query->execute([
-            'email' => $_POST['email'],
-            'senha' => $_POST['senha']
+            'email' => $_POST['email']
         ]);
 
-        if ($user = $query->fetch()) {
+        $user = $query->fetch();
+        if (password_verify($_POST['senha'], $user['senha'])) {
             $_SESSION['id'] = $user['id'];
             $_SESSION['nome'] = $user['nome'];
             $_SESSION['email'] = $user['email'];
             header('Location: painel.php');
-        }else{
+        } else {
             $_SESSION['mensagem'] = 'Email ou senha invalidos!';
             header('Location: login.php');
         }
+    }
+}
+
+if (isset($_POST['cadastrar_livro'])) {
+
+    if (strlen($_POST['titulo']) == 0) {
+        header('Location: novo-livro.php');
+        $_SESSION['mensagem'] = 'O campo titulo é obrigatorio!';
+        exit();
+    } elseif (strlen($_POST['autor']) == 0) {
+        header('Location: novo-livro.php');
+        $_SESSION['mensagem'] = 'O campo autor é obrigatorio!';
+        exit();
+    } else {
+
+        $titulo = ($_POST['titulo']);
+        $autor = ($_POST['autor']);
+        
+        if (strlen($_POST['descricao']) != 0) {
+            $descricao = ($_POST['descricao']);
 
 
+            $query = db()->prepare("INSERT INTO livros (titulo, autor, descricao) VALUES (:titulo, :autor, :descricao)");
+            $user = $query->execute([
+                'titulo' => $titulo,
+                'autor' => $autor,
+                'descricao' => $descricao
+            ]);
+        }else{
+            $query = db()->prepare("INSERT INTO livros (titulo, autor) VALUES (:titulo, :autor)");
+            $user = $query->execute([
+                'titulo' => $titulo,
+                'autor' => $autor
+            ]);
+        }
 
-
+        header('Location: index.php');
     }
 }

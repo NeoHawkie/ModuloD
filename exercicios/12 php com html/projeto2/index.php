@@ -1,28 +1,13 @@
 <?php
 include('db.php');
 
-$query = db()->prepare("select * from livros");
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$query = db()->prepare("select livros.*, usuarios.nome from livros inner join usuarios on livros.userid = usuarios.id");
 $query->execute();
 $livros = $query->fetchall();
-
-// $livros[] = [
-//     'titulo' => 'sla',
-//     'autor' => 'pokna',
-//     'descricao' => 'livro'
-// ];
-
-// $livros[] = [
-//     'titulo' => 'look back',
-//     'autor' => 'seila',
-//     'descricao' => 'livro do filme q o carlos me recomendou'
-// ];
-
-// $livros[] = [
-//     'titulo' => 'mirnaha',
-//     'autor' => 'seila',
-//     'descricao' => 'livro do filme 2'
-// ];
-
 
 ?>
 
@@ -34,6 +19,15 @@ $livros = $query->fetchall();
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <a href="login.php">login</a>
+        <a href="novo-usuario.php">novo usuario</a>
+        <?php //if(isset($_SESSION['id'])){ ?> 
+        <a href="novo-livro.php">novo livro</a>
+        <a href="logout.php">logout</a>
+        <?php //} ?>
+    </header>
+    <h2>Lista de livros</h2>
     <table>
         <thead>
             <tr>
@@ -41,15 +35,17 @@ $livros = $query->fetchall();
                 <th>Titulo</th>
                 <th>Autor</th>
                 <th>Descricao</th>
+                <th>Inserido por</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach($livros as $livro) : ?>
                 <tr>
-                <td><?= $livro['id']?></td>
+                <td><?= $livro['ID']?></td>
                 <td><?= $livro['titulo']?></td>
                 <td><?= $livro['autor']?></td>
                 <td><?= $livro['descricao']?></td>
+                <td><?= $livro['nome']?></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
