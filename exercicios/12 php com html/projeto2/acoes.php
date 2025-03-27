@@ -112,25 +112,28 @@ if (isset($_POST['cadastrar_livro'])) {
 
         $titulo = ($_POST['titulo']);
         $autor = ($_POST['autor']);
+        $userid = ($_POST['userid']);
         
         if (strlen($_POST['descricao']) != 0) {
             $descricao = ($_POST['descricao']);
 
 
-            $query = db()->prepare("INSERT INTO livros (titulo, autor, descricao) VALUES (:titulo, :autor, :descricao)");
+            $query = db()->prepare("INSERT INTO livros (titulo, autor, descricao, userid) VALUES (:titulo, :autor, :descricao, :userid)");
             $user = $query->execute([
                 'titulo' => $titulo,
                 'autor' => $autor,
-                'descricao' => $descricao
+                'descricao' => $descricao,
+                'userid' => $userid
             ]);
         }else{
-            $query = db()->prepare("INSERT INTO livros (titulo, autor) VALUES (:titulo, :autor)");
+            $query = db()->prepare("INSERT INTO livros (titulo, autor, userid) VALUES (:titulo, :autor, :userid)");
             $user = $query->execute([
                 'titulo' => $titulo,
-                'autor' => $autor
+                'autor' => $autor,
+                'userid' => $userid
             ]);
         }
 
-        header('Location: index.php');
+        header('Location: painel.php');
     }
 }

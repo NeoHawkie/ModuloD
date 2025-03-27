@@ -4,10 +4,9 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if (isset($_SESSION['id'])) {
-    header('location: painel.php');
-}
+include 'protect.php';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,19 +18,17 @@ if (isset($_SESSION['id'])) {
 </head>
 
 <body>
-    <h2>Login</h2>
+    <h2>Atualizar dados do usuário</h2>
 
     <form action="acoes.php" method="POST">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" required><br>
         <label for="email">Email</label>
         <input type="email" name="email" required><br>
         <label for="senha">Senha</label>
         <input type="password" name="senha" required><br>
-        <button type="submit" name="logar">Entrar</button>
+        <button type="submit" name="atualizar_usuario">Atualizar</button>
     </form>
-    <a href="novo-usuario.php">
-        <button>Novo cadastro</button>
-    </a>
-
 </body>
 
 </html>

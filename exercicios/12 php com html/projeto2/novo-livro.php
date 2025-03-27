@@ -20,7 +20,7 @@ include 'protect.php';
     <h2>Adicionar um novo livro</h2>
 
     <form action="acoes.php" method="POST">
-        <input hidden type="text" name="userid" value="<?php echo $_SESSION['id'] ?>" required>
+        <input type="text" name="userid" value="<?php echo $_SESSION['id'] ?>" required>
         <label for="titulo">Titulo</label>
         <input type="text" name="titulo" required><br>
         <label for="autor">Autor</label>
