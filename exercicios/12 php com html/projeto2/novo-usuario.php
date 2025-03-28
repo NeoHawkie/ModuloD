@@ -12,21 +12,37 @@ if (!isset($_SESSION)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastrar Novo Usuário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <h2>Novo usuário</h2>
+<body class="bg-gray-100 font-sans text-gray-900">
 
-    <form action="acoes.php" method="POST">
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" required><br>
-        <label for="email">Email</label>
-        <input type="email" name="email" required><br>
-        <label for="senha">Senha</label>
-        <input type="password" name="senha" required><br>
-        <button type="submit" name="cadastrar_usuario">Cadastrar</button>
-    </form>
+    <main class="flex justify-center items-center h-screen">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+            <h2 class="text-2xl font-semibold mb-6 text-center">Novo Usuário</h2>
+
+            <form action="acoes.php" method="POST" class="space-y-6">
+                <div>
+                    <label for="nome" class="block text-sm font-medium text-gray-700">Nome</label>
+                    <input type="text" name="nome" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Digite seu nome">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" name="email" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Digite seu email">
+                </div>
+
+                <div>
+                    <label for="senha" class="block text-sm font-medium text-gray-700">Senha</label>
+                    <input type="password" name="senha" required class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Digite sua senha">
+                </div>
+
+                <button type="submit" name="cadastrar_usuario" class="w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Cadastrar</button>
+            </form>
+        </div>
+    </main>
+
 </body>
 
 </html>

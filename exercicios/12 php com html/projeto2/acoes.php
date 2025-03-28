@@ -26,13 +26,14 @@ if (isset($_POST['atualizar_usuario'])) {
         $id = ($_SESSION['id']);
         $nome = ($_POST['nome']);
         $email = ($_POST['email']);
-        $senha = ($_POST['senha']);
+        $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
         $query = db()->prepare("update usuarios set nome = :nome, email = :email, senha = :senha where id = :id");
         $user = $query->execute([
             'nome' => $nome,
             'email' => $email,
-            'senha' => $senha
+            'senha' => $senha,
+            'id' => $id
         ]);
 
         header('Location: index.php');
@@ -114,7 +115,7 @@ if (isset($_POST['cadastrar_livro'])) {
         $autor = ($_POST['autor']);
         $userid = ($_POST['userid']);
         
-        if (strlen($_POST['descricao']) != 0) {
+        // if (strlen($_POST['descricao']) != 0) {
             $descricao = ($_POST['descricao']);
 
 
@@ -125,14 +126,14 @@ if (isset($_POST['cadastrar_livro'])) {
                 'descricao' => $descricao,
                 'userid' => $userid
             ]);
-        }else{
-            $query = db()->prepare("INSERT INTO livros (titulo, autor, userid) VALUES (:titulo, :autor, :userid)");
-            $user = $query->execute([
-                'titulo' => $titulo,
-                'autor' => $autor,
-                'userid' => $userid
-            ]);
-        }
+        // }else{
+        //     $query = db()->prepare("INSERT INTO livros (titulo, autor, userid) VALUES (:titulo, :autor, :userid)");
+        //     $user = $query->execute([
+        //         'titulo' => $titulo,
+        //         'autor' => $autor,
+        //         'userid' => $userid
+        //     ]);
+        // }
 
         header('Location: painel.php');
     }
