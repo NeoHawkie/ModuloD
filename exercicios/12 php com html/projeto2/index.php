@@ -21,6 +21,7 @@ if (isset($_GET['pesquisar'])) {
     $query->execute();
     $livros = $query->fetchall();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -39,10 +40,12 @@ if (isset($_GET['pesquisar'])) {
         <nav class="container mx-auto flex justify-between">
             <a href="login.php" class="hover:text-blue-200">Login</a>
             <a href="novo-usuario.php" class="hover:text-blue-200">Novo Usuário</a>
-            <?php //if(isset($_SESSION['id'])){ ?>
+            <?php //if(isset($_SESSION['id'])){ 
+            ?>
             <a href="novo-livro.php" class="hover:text-blue-200">Novo Livro</a>
             <a href="logout.php" class="hover:text-blue-200">Logout</a>
-            <?php //} ?>
+            <?php //} 
+            ?>
         </nav>
     </header>
 
@@ -52,30 +55,51 @@ if (isset($_GET['pesquisar'])) {
             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Pesquisar</button>
         </form>
 
+
         <h2 class="text-2xl font-semibold mb-4">Lista de Livros</h2>
 
-        <table class="min-w-full table-auto bg-white shadow-md rounded-lg">
-            <thead class="bg-gray-200">
-                <tr>
-                    <th class="px-4 py-2 text-left">ID</th>
-                    <th class="px-4 py-2 text-left">Título</th>
-                    <th class="px-4 py-2 text-left">Autor</th>
-                    <th class="px-4 py-2 text-left">Descrição</th>
-                    <th class="px-4 py-2 text-left">Inserido por</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($livros as $livro) : ?>
-                    <tr class="border-t">
-                        <td class="px-4 py-2"><?= $livro['ID'] ?></td>
-                        <td class="px-4 py-2"><?= $livro['titulo'] ?></td>
-                        <td class="px-4 py-2"><?= $livro['autor'] ?></td>
-                        <td class="px-4 py-2"><?= $livro['descricao'] ?></td>
-                        <td class="px-4 py-2"><?= $livro['nome'] ?></td>
+        <form action="" method="POST">
+            <?php
+            // $allChecked = false;
+
+            // foreach ($livros as $livro) {
+            //     if (isset($_POST['chk' . $livro['ID']])) {
+            //         $allChecked = true;
+            //         break;
+            //     }
+            // }
+            ?>
+            <table class="min-w-full table-auto bg-white shadow-md rounded-lg">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-4 py-2 text-left"><input type="checkbox" name="chkAll" <?php //echo $allChecked ? 'checked' : ''?> hidden></th>
+                        <th class="px-4 py-2 text-left">ID</th>
+                        <th class="px-4 py-2 text-left">Título</th>
+                        <th class="px-4 py-2 text-left">Autor</th>
+                        <th class="px-4 py-2 text-left">Descrição</th>
+                        <th class="px-4 py-2 text-left">Inserido por</th>
                     </tr>
-                <?php endforeach ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($livros as $livro) : ?>
+                        <tr class="border-t">
+                            <td class="px-4 py-2"><input type="checkbox" name="chk<?= $livro['ID'] ?> <?php //echo $allChecked ? 'checked' : ''?>"></td>
+                            <td class="px-4 py-2"><?= $livro['ID'] ?></td>
+                            <td class="px-4 py-2"><?= $livro['titulo'] ?></td>
+                            <td class="px-4 py-2"><?= $livro['autor'] ?></td>
+                            <td class="px-4 py-2"><?= $livro['descricao'] ?></td>
+                            <td class="px-4 py-2"><?= $livro['nome'] ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+                <tfoot class="bg-gray-200">
+                    <tr>
+                        <td class="px-4 py-2 text-left">Ações:</td>
+                        <td class="px-4 py-2 text-left hover:text-gray-500"><button name="deletar_selecionados" type="submit">Deletar selecionados</button></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
     </main>
 
 </body>
