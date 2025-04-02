@@ -24,7 +24,7 @@ if (isset($_SESSION['id'])) {
     <main class="flex justify-center items-center h-screen">
         <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
             <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
-
+                        
             <form action="acoes.php" method="POST" class="space-y-4">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
