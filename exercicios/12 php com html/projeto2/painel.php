@@ -20,13 +20,20 @@ include 'protect.php';
 
     <main class="flex justify-center items-center h-screen">
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h1 class="text-3 text-red-600 font-bold flex justify-center text-center">
+                <?php if (isset($_SESSION['message'])) { ?>
+                    ! <?= $_SESSION['message']; ?> !
+
+                <?php unset($_SESSION['message']);
+                } ?>
+            </h1>
             <h1 class="text-3xl font-semibold mb-6 text-center">Bem-vindo, <?= $_SESSION['nome']; ?>!</h1>
 
             <div class="space-y-4">
                 <a href="index.php" class="block text-center text-blue-500 hover:text-blue-600">Página Inicial</a>
                 <a href="logout.php" class="block text-center text-red-500 hover:text-red-600">Deslogar</a>
                 <a href="deletar-usuario.php" onclick="return confirm('Deletar sua conta e voltar para a pagina inicial?')"
-                 class="block text-center text-green-500 hover:text-green-600">Deletar Conta</a>
+                    class="block text-center text-green-500 hover:text-green-600">Deletar Conta</a>
                 <a href="update.php" class="block text-center text-blue-500 hover:text-blue-600">Atualizar Dados</a>
                 <a href="novo-livro.php" class="block text-center text-red-500 hover:text-red-600">Cadastrar Livro</a>
                 <a href="deletar-livro.php" class="block text-center text-green-500 hover:text-green-600"> Deletar Livro</a>

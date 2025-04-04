@@ -5,11 +5,7 @@ if (!isset($_SESSION)) {
 }
 
 if(!isset($_SESSION['id'])){
-
     die('Você não tem permissão para acessar essa pagina! <a href="login.php">Voltar</a>');
-    
-
 }
-
 
 ?>

@@ -1,9 +1,11 @@
 <?php
 
+include 'functions.php';
+
 if (isset($_POST['nome'])) {
 
-    $db = new PDO('sqlite:banco.sqlite');
-    $query = $db->prepare("INSERT INTO usuarios 
+    
+    $query =db()->prepare("INSERT INTO usuarios 
     (nome, email, senha) VALUES (:nome, :email, :senha)");
 
     $hash = password_hash($_POST['senha'], PASSWORD_DEFAULT);

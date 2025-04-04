@@ -35,7 +35,7 @@ if (isset($_POST['atualizar_usuario'])) {
             'senha' => $senha,
             'id' => $id
         ]);
-
+        $_SESSION['message'] = 'Dados de usuario atualizado';
         header('Location: index.php');
     }
 }
@@ -101,6 +101,19 @@ if (isset($_POST['logar'])) {
 
 if (isset($_POST['cadastrar_livro'])) {
 
+    if (isset($_FILES['cover'])) {
+        $name = $_FILES['cover']['name'];
+        $tmp_name = $_FILES['cover']['tmp_name'];
+        $extesion = pathinfo($name, PATHINFO_EXTENSION);
+        $cover = uniqid() . '.' . $extesion;
+
+        if ($extesion == 'png' || $extesion == 'jpg'  || $extesion == 'jpeg') {
+            move_uploaded_file($tmp_name, 'uploads/' . $cover);
+        } else {
+            die('Arquivo selecionado com formato inválido!');
+        }
+    }
+
     if (strlen($_POST['titulo']) == 0) {
         header('Location: novo-livro.php');
         $_SESSION['mensagem'] = 'O campo titulo é obrigatorio!';
@@ -114,27 +127,18 @@ if (isset($_POST['cadastrar_livro'])) {
         $titulo = ($_POST['titulo']);
         $autor = ($_POST['autor']);
         $userid = ($_POST['userid']);
-        
-        // if (strlen($_POST['descricao']) != 0) {
-            $descricao = ($_POST['descricao']);
+        $descricao = ($_POST['descricao']);
 
 
-            $query = db()->prepare("INSERT INTO livros (titulo, autor, descricao, userid) VALUES (:titulo, :autor, :descricao, :userid)");
-            $user = $query->execute([
-                'titulo' => $titulo,
-                'autor' => $autor,
-                'descricao' => $descricao,
-                'userid' => $userid
-            ]);
-        // }else{
-        //     $query = db()->prepare("INSERT INTO livros (titulo, autor, userid) VALUES (:titulo, :autor, :userid)");
-        //     $user = $query->execute([
-        //         'titulo' => $titulo,
-        //         'autor' => $autor,
-        //         'userid' => $userid
-        //     ]);
-        // }
-
+        $query = db()->prepare("INSERT INTO livros (titulo, autor, descricao, userid, cover_name) VALUES (:titulo, :autor, :descricao, :userid, :cover)");
+        $user = $query->execute([
+            'titulo' => $titulo,
+            'autor' => $autor,
+            'descricao' => $descricao,
+            'userid' => $userid,
+            'cover' => $cover
+        ]);
+        $_SESSION['message'] = 'Novo livro cadastrado com sucesso';
         header('Location: painel.php');
     }
 }

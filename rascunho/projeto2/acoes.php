@@ -28,3 +28,18 @@ if(isset($_POST['logar'])){
         header('Location: login.php');
     }
 }
+
+if(isset($_POST['deleta_usuario'])){
+    $db = new PDO('sqlite:banco.sqlite');
+    $query = $db->prepare("DELETE FROM usuarios WHERE id = :id");
+   $user = $query->execute([
+        'id' => $_POST['deleta_usuario']
+    ]);
+    
+    if($user){
+        header('Location: index.php');
+    }else{
+        echo 'Delete falhou!';
+    }
+
+}
