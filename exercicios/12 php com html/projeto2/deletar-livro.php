@@ -10,6 +10,17 @@ if (isset($_GET['ID'])) {
 
     $id = ($_GET['ID']);
 
+    // deleta a imagem
+    $query = db()->prepare("SELECT cover_name
+                            FROM livros 
+                            WHERE ID = :id");
+    $query->execute([
+        'id' => $id
+    ]);
+    $cover = $query->fetch();
+    unlink('uploads/' . $cover['cover_name']);
+    
+    // deleta a linha com os dados do livro da base de dados
     $query = db()->prepare("DELETE from livros where id = :id");
     $user = $query->execute([
         'id' => $id
