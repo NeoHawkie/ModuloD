@@ -1,8 +1,15 @@
 <?php
 
 require 'dados.php';
+// $livro = $livros[$_REQUEST['id']-1];
 
 
+$filtrada = array_filter($livros, fn($l) => $l['id'] == $_REQUEST['id']);
+$livro = array_pop($filtrada);
+// echo '<pre>';
+// var_dump($livro);
+// echo '</pre>';
+// exit;
 
 ?>
 
@@ -36,7 +43,7 @@ require 'dados.php';
     <main class="mx-auto max-w-screen-lg space-y-6">
         <section class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5">
 <!--  -->
-        <?php $livro = $livros[$_REQUEST['id']-1];?>
+        
                 <div class="p-2 roudend border-stone-800 border-2 bg-stone-900 m-1">
                     <div class="flex">
                         <div class="w-1/3">Imagem</div>
