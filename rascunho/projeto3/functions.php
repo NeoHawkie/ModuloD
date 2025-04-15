@@ -1,4 +1,5 @@
 <?php
+
 //usado pelas controllers e pela abort pra mostrar uma pagina na tela e seus dados
 function view($view, $data = []){
 

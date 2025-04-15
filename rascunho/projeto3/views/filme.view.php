@@ -5,7 +5,7 @@
     <div class="flex">
         <div class="w-1/3">Imagem</div>
         <div>
-            <a href="/livro.php?id=<?= $filme['id']; ?>" class="font-semibold hover:underline"><?= $filme['titulo']; ?></a>
+            <a href="/filme.php?id=<?= $filme['id']; ?>" class="font-semibold hover:underline"><?= $filme['titulo']; ?></a>
             <div class="text-xs italic"><?= $filme['autor']; ?></div>
             <div>⭐⭐⭐⭐⭐</div>
         </div>

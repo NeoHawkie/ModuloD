@@ -1,5 +1,6 @@
 <?php 
 
+/*
 $livros = [
     ['id' => 1, 'titulo' => 'O Senhor dos Anéis: A Sociedade do Anel 1', 'autor' => 'J. R. R. Tolkien', 'descricao' => 'A Sociedade do Anel é a primeira parte da trilogia O Senhor dos Anéis, de J.R.R. Tolkien. Nela, Frodo Bolseiro e oito companheiros partem em uma jornada para destruir o Um Anel e salvar a Terra-média.'],
     ['id' => 2, 'titulo' => 'O Senhor dos Anéis: A Sociedade do Anel 2', 'autor' => 'J. R. R. Tolkien', 'descricao' => 'A Sociedade do Anel é a primeira parte da trilogia O Senhor dos Anéis, de J.R.R. Tolkien. Nela, Frodo Bolseiro e oito companheiros partem em uma jornada para destruir o Um Anel e salvar a Terra-média.'],
@@ -25,6 +26,10 @@ $filmes = [
     ['id' => 9, 'titulo' => 'filme O Senhor dos Anéis: A Sociedade do Anel 9', 'autor' => 'J. R. R. Tolkien', 'descricao' => 'A Sociedade do Anel é a primeira parte da trilogia O Senhor dos Anéis, de J.R.R. Tolkien. Nela, Frodo Bolseiro e oito companheiros partem em uma jornada para destruir o Um Anel e salvar a Terra-média.'],
 
 ];
+*/
 
+function db(){
+    return $db = new PDO('sqlite:bd.sqlite');
+}
 
 ?>
