@@ -10,13 +10,13 @@
             <div class="flex">
                 <div class="w-1/3">Imagem</div>
                 <div>
-                    <a href="/filme?id=<?= $filme['id']; ?>" class="font-semibold hover:underline"><?= $filme['titulo']; ?></a>
-                    <div class="text-xs italic"><?= $filme['autor']; ?></div>
+                    <a href="/filme?id=<?= $filme->id; ?>" class="font-semibold hover:underline"><?= $filme->titulo; ?></a>
+                    <div class="text-xs italic"><?= $filme->autor; ?></div>
                     <div>⭐⭐⭐⭐⭐</div>
                 </div>
             </div>
             <div>
-                <?= $filme['descricao']; ?>
+                <?= $filme->descricao; ?>
             </div>
         </div>
     <?php endforeach; ?>

@@ -1,7 +1,6 @@
 <?php
 
 $livros = (new DB)->livros();
-
-view('index', compact('livros'));
+view('livros', ['livros' => $livros]);
 
 ?>

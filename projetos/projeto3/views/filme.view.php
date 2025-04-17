@@ -5,13 +5,13 @@
     <div class="flex">
         <div class="w-1/3">Imagem</div>
         <div>
-            <a href="/livro.php?id=<?= $livro->id; ?>" class="font-semibold hover:underline"><?= $livro->titulo; ?></a>
-            <div class="text-xs italic"><?= $livro->autor; ?></div>
+            <a href="/filme.php?id=<?= $filme->id; ?>" class="font-semibold hover:underline"><?= $filme->titulo; ?></a>
+            <div class="text-xs italic"><?= $filme->id; ?></div>
             <div>⭐⭐⭐⭐⭐</div>
         </div>
     </div>
     <div>
-        <?= $livro->descricao; ?>
+        <?= $filme->descricao; ?>
     </div>
 </div>
 
