@@ -1,34 +1,27 @@
-<?php 
+<?php
 
-class DB{
-
+class DB
+{
     private $db;
 
     public function __construct()
-    {   
+    {
         $this->db = new PDO('sqlite:database.sqlite');
     }
 
+    //função pra simplificar o uso dos comandos com sql
+    //recebe a querry e executa... pode receber parametros
+    public function query($query, $class = null, $params = []){
+        $prepare = $this->db->prepare($query);
 
-    public function livros(){
+        if($class){
+            //se receber uma classe, entra no if e altera o fetch mode pra fetch_class da classe recebida
+            $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
+            //quando executar o fetchAll, vai puxar os dados já como o objeto da classe
 
-        $query = $this->db->query("select * from livros");
-        $items = $query->fetchAll();
-        return array_map(fn($item) => Livro::make($item), $items);
-
+        }
+        $prepare->execute($params);
+        //retorna o prepare, esperando o fetch ou fetchAll
+        return $prepare;
     }
-
-    public function livro($id){
-
-        $query = $this->db->query("select * from livros WHERE id = " . $id);
-        $items = $query->fetchAll();
-
-        return array_map(fn($item) => Livro::make($item), $items)[0];
-
-    }
-
-
 }
-
-
-?>

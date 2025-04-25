@@ -1,9 +1,9 @@
 <?php
+$livro = (new DB)->executeQuery(
+    'SELECT * FROM livros WHERE id = :id',
+    Livro::class,
+    ['id' => $_REQUEST['id']]
+)->fetch();
 
-
-$livro = (new DB)->livro($_REQUEST['id']);
-
-//chama a view do livro com o livro filtrado como data
 view('livro', ['livro' => $livro]);
-
 ?>

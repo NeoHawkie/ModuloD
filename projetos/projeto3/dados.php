@@ -40,34 +40,45 @@ class DB{
         $this->db = new PDO('sqlite:bd.sqlite');
     }
 
-    public function livros(){
-        $query = $this->db->query("select * from livros");
-        $items = $query->fetchAll();
-        return array_map(fn($item) => Livro::make($item), $items);
+    public function executeQuery($query, $class = NULL, $params = []){
+        $prepare = $this->db->prepare($query);
+
+        if($class){
+            $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
+        }
+        
+        $prepare->execute($params);
+        return $prepare;
     }
 
-    public function livro($id){
-        $query = $this->db->prepare("SELECT * FROM livros WHERE id = :id");
-        $query->execute([
-            'id' => $id
-        ]);
-        $items = $query->fetchAll();
-        return array_map(fn($item) => Livro::make($item), $items)[0];
-    }
+    // public function livros(){
+    //     $query = $this->db->query("select * from livros");
+    //     $items = $query->fetchAll();
+    //     return array_map(fn($item) => Livro::make($item), $items);
+    // }
 
-    public function filmes(){
-        $query = $this->db->query("select * from filmes");
-        $items = $query->fetchAll();
-        return array_map(fn($item) => Livro::make($item), $items);
-    }
+    // public function livro($id){
+    //     $query = $this->db->prepare("SELECT * FROM livros WHERE id = :id");
+    //     $query->execute([
+    //         'id' => $id
+    //     ]);
+    //     $items = $query->fetchAll();
+    //     return array_map(fn($item) => Livro::make($item), $items)[0];
+    // }
 
-    public function filme($id){
-        $query = $this->db->prepare("SELECT * FROM filmes WHERE id = :id");
-        $query->execute([
-            'id' => $id
-        ]);
-        $items = $query->fetchAll();
-        return array_map(fn($item) => Livro::make($item), $items)[0];
-    }
+    // public function filmes(){
+    //     $query = $this->db->query("select * from filmes");
+    //     $items = $query->fetchAll();
+    //     return array_map(fn($item) => Livro::make($item), $items);
+    // }
+
+    // public function filme($id){
+    //     $query = $this->db->prepare("SELECT * FROM filmes WHERE id = :id");
+    //     $query->execute([
+    //         'id' => $id
+    //     ]);
+    //     $items = $query->fetchAll();
+    //     return array_map(fn($item) => Livro::make($item), $items)[0];
+    // }
 }
 ?>

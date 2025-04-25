@@ -9,13 +9,13 @@ class Livro
     public $descricao;
 
 
-    public static function make($item)
-    {
-        $livro = new Livro();
-        $livro->id = $item['id'];
-        $livro->titulo = $item['titulo'];
-        $livro->autor = $item['autor'];
-        $livro->descricao = $item['descricao'];
-        return $livro;
-    }
+    // public static function make($item)
+    // {
+    //     $livro = new Livro();
+    //     $livro->id = $item['id'];
+    //     $livro->titulo = $item['titulo'];
+    //     $livro->autor = $item['autor'];
+    //     $livro->descricao = $item['descricao'];
+    //     return $livro;
+    // }
 }
