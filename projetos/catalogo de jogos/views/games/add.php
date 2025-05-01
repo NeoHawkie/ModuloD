@@ -1,4 +1,4 @@
-<?php include 'views/templates/header.php'; ?>
+<?php //include 'views/templates/header.php'; ?>
 <h1 class="text-2xl mb-4">Adicionar Jogo</h1>
 <form method="POST" action="index.php?action=add_game" class="space-y-4">
     <input type="text" name="title" placeholder="Título" class="border p-2 w-full">

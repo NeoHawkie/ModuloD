@@ -1,3 +1,8 @@
+<?php if (!empty($error)): ?>
+    <script>
+        alert("<?= $error ?>");
+    </script>
+<?php endif; ?>
 <?php include 'views/templates/header.php'; ?>
 <h1 class="text-2xl mb-4">Login</h1>
 <form method="POST" action="index.php?action=login" class="space-y-4">

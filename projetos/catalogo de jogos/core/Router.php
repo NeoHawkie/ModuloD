@@ -1,6 +1,9 @@
 <?php
 require_once 'core/Database.php';
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 
 class Router {
     public static function route() {
@@ -21,14 +24,17 @@ class Router {
                 (new AuthController($pdo))->logout();
                 break;
             case 'dashboard':
+                require_once 'protected.php';
                 require_once 'controllers/GameController.php';
                 (new GameController($pdo))->dashboard();
                 break;
             case 'add_game':
+                require_once 'protected.php';
                 require_once 'controllers/GameController.php';
                 (new GameController($pdo))->addGame();
                 break;
             case 'delete_game':
+                require_once 'protected.php';
                 require_once 'controllers/GameController.php';
                 (new GameController($pdo))->deleteGame();
                 break;
