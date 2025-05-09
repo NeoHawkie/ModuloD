@@ -4,6 +4,15 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+function dd(...$dump){
+    echo '<pre>';
+    var_dump($dump);
+    echo '</pre>';
+
+    die();
+}
+
+//$rout = str_replace('/', '', parse_url($_SERVER['REQUEST_URI'])['path']);
 
 class Router {
     public static function route() {

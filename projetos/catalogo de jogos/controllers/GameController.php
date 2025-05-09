@@ -9,7 +9,11 @@ class GameController {
     }
 
     public function dashboard() {
-        $games = $this->gameModel->getAllByUser($_SESSION['user_id']);
+        if (isset($_GET['searchGame'])) {
+            $games = $this->gameModel->searchByTitleOrPlatform($_SESSION['user_id'], $_GET['searchGame']);
+        }else{
+            $games = $this->gameModel->getAllByUser($_SESSION['user_id']);
+        }
         require 'views/games/dashboard.php';
     }
 
