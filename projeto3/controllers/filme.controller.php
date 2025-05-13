@@ -1,6 +1,6 @@
 <?php
 
-$filme = (new DB)->executeQuery(
+$filme = $database->executeQuery(
     'SELECT * FROM filmes WHERE id = :id',
     Filme::class,
     ['id' => $_REQUEST['id']]

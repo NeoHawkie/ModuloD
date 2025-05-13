@@ -3,7 +3,7 @@
 $pesquisar = $_REQUEST['pesquisar'] ?? '';
 
 
-$livros = (new DB)->ExecuteQuery(
+$livros = $database->ExecuteQuery(
     "select * from livros WHERE titulo like 
     :pesquisar or autor like :pesquisar 
     or descricao like :pesquisar",

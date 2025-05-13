@@ -20,16 +20,15 @@ class Validacao
             //$regra = required, $regra = email, $regra = $confimed
 
             foreach ($regrasDoCampo as $regra) {
-
-
                 $valorDoCampo = $dados[$campo];
-
                 if ($regra == 'confirmed') {
-
-
                     $validacoes->$regra($campo, $valorDoCampo, $dados["{$campo}_confirmacao"]);
-                } else {
-
+                }elseif(str_contains($regra, ':')){
+                    $temp = explode(':', $regra);
+                    $regra = $temp[0];
+                    $regraAr = $temp[1];  
+                    $validacoes->$regra($regraAr, $campo, $valorDoCampo);
+                }else {
                     $validacoes->$regra($campo, $valorDoCampo);
                 }
             }
@@ -61,6 +60,18 @@ class Validacao
     {
         if (!strpbrk($valor, '!@#$%^*&()')) {
             $this->validacoes[] = "O $campo precisa ter no minimo um caracter especial";
+        }
+    }
+
+    public function min ($min, $campo, $valor){
+        if ($valor < $min) {
+            $this->validacoes[] = "O $campo precisa ter no minimo $min caracteres";
+        }
+    }
+
+    public function max ($max, $campo, $valor){
+        if ($valor > $max) {
+            $this->validacoes[] = "O $campo precisa ter no maximo $max caracteres";
         }
     }
 

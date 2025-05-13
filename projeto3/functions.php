@@ -13,11 +13,17 @@ function view($view, $data = []){
 }
 
 //função de testinho
-function dd(...$dump){
+function dump(...$dump){
     echo '<pre>';
     var_dump($dump);
     echo '</pre>';
 
+    die();
+}
+
+function dd(...$dump)
+{
+    dump($dump);
     die();
 }
 

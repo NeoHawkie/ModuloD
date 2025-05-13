@@ -1,6 +1,7 @@
 <?php
 
-//chama a function.php
+
+session_start();
 require 'functions.php';
 require 'models/Livro.php';
 require 'models/Filme.php';

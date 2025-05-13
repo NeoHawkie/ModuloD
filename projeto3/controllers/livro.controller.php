@@ -1,5 +1,5 @@
 <?php
-$livro = (new DB)->executeQuery(
+$livro = $database->executeQuery(
     'SELECT * FROM livros WHERE id = :id',
     Livro::class,
     ['id' => $_REQUEST['id']]
