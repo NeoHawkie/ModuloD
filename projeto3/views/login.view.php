@@ -20,16 +20,23 @@
     <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Registro</h1>
     <form action="/registrar" method="POST" class="p-4 space-y-4">
 
-    <?php
-    if (isset($_SESSION['validacao'])): ?>
+
+      <?php if (isset($_SESSION['mensagem'])) : ?>
+        <div class="border-green-800 bg-green-900 text-stone-400 px-4 py-1 
+        rounded-md border-2 text-sm font-bold">
+          <?= $_SESSION['mensagem'];
+          unset($_SESSION['mensagem']);?>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($_SESSION['validacao'])): ?>
         <div class="border-red-800 bg-red-900 text-stone-400 px-4 py-1 
         rounded-md border-2 text-sm font-bold">
           <ul>
             <li>Erro de validação</li>
             <?php foreach ($_SESSION['validacao'] as $validacao): ?>
               <li><?= $validacao ?></li>
-            <?php endforeach; 
-              unset($_SESSION['validacao']);
+            <?php endforeach;
+            unset($_SESSION['validacao']);
             ?>
           </ul>
         </div>

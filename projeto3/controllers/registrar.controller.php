@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]
     );
 
-    $_SESSION['validacao'] = ['Registrado com sucesso!'];
+    $_SESSION['mensagem'] = 'Registrado com sucesso!';
     header('Location: /login');
     exit();
-}
+}   
